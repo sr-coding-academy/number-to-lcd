@@ -3,5 +3,10 @@
     "type": "project",
     "license": "MIT",
     "minimum-stability": "dev",
-    "require": {}
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "NumberToLCD\\": "src/"
+        }
+    }
 }
