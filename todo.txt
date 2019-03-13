@@ -1,0 +1,6 @@
+NumberToLCD constructor aufräumen
+Display funktionalität aus Digit extrahieren
+Input benutzen
+2 Zahlen
+Grafische Darstellung auslagern
+Alle anderen Digits implementieren
