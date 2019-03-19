@@ -5,27 +5,37 @@ namespace NumberToLCD;
 class Digit
 {
     private $singleDigit;
+    private $digitTemplate = [];
+
+    /**
+     * @return array
+     */
+    public function getDigitTemplate()
+    {
+        return $this->digitTemplate;
+    }
 
     public function __construct($singleDigit)
     {
+        $this->initializeTemplate();
         $this->singleDigit = $singleDigit;
-        $this->readSingleDigitFromFile($this->singleDigit);
+        $line = $this->readSingleDigitFromFile($this->singleDigit);
+        $this->buildDigit($line);
     }
 
-    public function getGraphicalOutput()
+    public function initializeTemplate()
     {
-        $graphicalOutput = [
+        $this->digitTemplate = [
             [' ', '_', ' '],
             ['|', '_', '|'],
             ['|', '_', '|']
         ];
-        $this->displaySingleDigit($graphicalOutput);
     }
 
-    private function displaySingleDigit($display)
+    public function displaySingleDigit()
     {
         for ($i = 0; $i < 3; $i++) {
-            echo $display[$i][0] . $display[$i][1] . $display[$i][2];
+            echo $this->digitTemplate[$i][0] . $this->digitTemplate[$i][1] . $this->digitTemplate[$i][2];
             echo "\n";
         }
     }
@@ -34,8 +44,21 @@ class Digit
     {
         $fileHandler = fopen(__DIR__ . '\..\resources\digits.txt', "r");
         $line = fread($fileHandler, 1024);
-        $line = explode(',',$line);
+        $line = explode(',', $line);
 
-        echo $line . "\n";
+        return $line;
+    }
+
+    private function buildDigit($line)
+    {
+        $counter=0;
+        for ($i = 0; $i < 3; $i++) {
+            for ($j = 0; $j < 3; $j++) {
+                if ($line[$counter] == 0) {
+                    $this->digitTemplate[$i][$j] = " ";
+                }
+                $counter++;
+            }
+        }
     }
 }

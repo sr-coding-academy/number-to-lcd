@@ -18,7 +18,7 @@ class Display
     public function displayAllDigits()
     {
         foreach ($this->allDigits as $digit) {
-            $digit->getGraphicalOutput();
+            $digit->displaySingleDigit();
         }
     }
 
