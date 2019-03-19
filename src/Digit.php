@@ -7,14 +7,6 @@ class Digit
     private $singleDigit;
     private $digitTemplate = [];
 
-    /**
-     * @return array
-     */
-    public function getDigitTemplate()
-    {
-        return $this->digitTemplate;
-    }
-
     public function __construct($singleDigit)
     {
         $this->initializeTemplate();
@@ -30,14 +22,6 @@ class Digit
             ['|', '_', '|'],
             ['|', '_', '|']
         ];
-    }
-
-    public function displaySingleDigit()
-    {
-        for ($i = 0; $i < 3; $i++) {
-            echo $this->digitTemplate[$i][0] . $this->digitTemplate[$i][1] . $this->digitTemplate[$i][2];
-            echo "\n";
-        }
     }
 
     private function readSingleDigitFromFile($singleDigit)
@@ -59,6 +43,14 @@ class Digit
                 }
                 $counter++;
             }
+        }
+    }
+
+    public function displaySingleDigit()
+    {
+        for ($i = 0; $i < 3; $i++) {
+            echo $this->digitTemplate[$i][0] . $this->digitTemplate[$i][1] . $this->digitTemplate[$i][2];
+            echo "\n";
         }
     }
 }
