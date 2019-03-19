@@ -10,7 +10,7 @@ class NumberToLCD
 
     public function __construct($inputNumber)
     {
-        $this->numbers = (array)$inputNumber;
+        $this->numbers = str_split($inputNumber);
         $this->allDigits = [];
         $this->initializeAllDigits();
         $this->display = new Display($this->allDigits);
