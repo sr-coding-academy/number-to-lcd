@@ -1,6 +1,5 @@
-NumberToLCD constructor aufräumen
-Display funktionalität aus Digit extrahieren
+2. Zeile in das digits.txt schreiben, und benützen
 Input benutzen
-2 Zahlen
-Grafische Darstellung auslagern
-Alle anderen Digits implementieren
+Alle anderen Digits implementieren in text file (1-9 8?)
+Display funktionalität aus Digit extrahieren
+
