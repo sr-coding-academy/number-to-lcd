@@ -9,13 +9,11 @@ class Digit
 
     public function __construct($singleDigit)
     {
-        $this->initializeTemplate();
         $this->singleDigit = $singleDigit;
-        $line = $this->readSingleDigitFromFile($this->singleDigit);
-        $this->buildDigit($line);
+        $this->initializeTemplate();
     }
 
-    public function initializeTemplate()
+    private function initializeTemplate()
     {
         $this->digitTemplate = [
             [' ', '_', ' '],
@@ -24,16 +22,16 @@ class Digit
         ];
     }
 
-    private function readSingleDigitFromFile($singleDigit)
+    public function readSingleDigitFromFile($singleDigit)
     {
-        $fileHandler = fopen(__DIR__ . '\..\resources\digits.txt', "r");
-        $line = fread($fileHandler, 1024);
+        $line = $this->readFile();
+
         $line = explode(',', $line);
 
         return $line;
     }
 
-    private function buildDigit($line)
+    public function buildDigit($line)
     {
         $counter=0;
         for ($i = 0; $i < 3; $i++) {
@@ -52,5 +50,15 @@ class Digit
             echo $this->digitTemplate[$i][0] . $this->digitTemplate[$i][1] . $this->digitTemplate[$i][2];
             echo "\n";
         }
+    }
+
+    /**
+     * @return bool|resource
+     */
+    public function readFile()
+    {
+        $fileHandler = fopen(__DIR__ . '\..\resources\digits.txt', "r");
+        $line = fread($fileHandler, 1024);
+        return $line;
     }
 }

@@ -1,5 +1,14 @@
+Klasse Digit testen
+    Externes .txt file, ob lesbar ist
+    Checken, ob das ein array ist
+    Cecken ob das array 1 und 0 enthält
+    Checken ob das array 9 Elemente hat
+    Checken ob Digit represents expectation
+Refactor buildDigit
+Digits.txt -> JSON
+Klasse Display testen
+Klasse NumberToLCD testen
 2. Zeile in das digits.txt schreiben, und benützen
 Input benutzen
 Alle anderen Digits implementieren in text file (1-9 8?)
 Display funktionalität aus Digit extrahieren
-
