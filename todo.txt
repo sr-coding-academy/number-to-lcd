@@ -1,7 +1,5 @@
 Klasse Digit testen
-    Checken, ob das ein array ist
     Cecken ob das array 1 und 0 enthält
-    Checken ob das array 9 Elemente hat
     Checken ob Digit represents expectation
     Refactor buildDigit
     Refactor Pfadkonstante
