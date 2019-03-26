@@ -23,7 +23,7 @@ class Digit
         ];
     }
 
-    public function readSingleDigitFromFile($singleDigit)
+    public function readSingleDigitFromFile()
     {
         $line = $this->readFile();
 
@@ -56,7 +56,7 @@ class Digit
     /**
      * @return bool|resource
      */
-    public function readFile()
+    private function readFile()
     {
         $fileHandler = fopen(self::DIGIT_TEMPLATE_FILE_PATH, "r");
         $line = fread($fileHandler, 1024);
