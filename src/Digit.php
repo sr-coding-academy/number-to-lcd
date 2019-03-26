@@ -4,6 +4,7 @@ namespace NumberToLCD;
 
 class Digit
 {
+    const DIGIT_TEMPLATE_FILE_PATH = __DIR__ . '\..\resources\digits.txt';
     private $singleDigit;
     private $digitTemplate = [];
 
@@ -57,7 +58,7 @@ class Digit
      */
     public function readFile()
     {
-        $fileHandler = fopen(__DIR__ . '\..\resources\digits.txt', "r");
+        $fileHandler = fopen(self::DIGIT_TEMPLATE_FILE_PATH, "r");
         $line = fread($fileHandler, 1024);
         return $line;
     }
