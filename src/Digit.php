@@ -35,22 +35,18 @@ class Digit
     public function buildDigit($line)
     {
         $counter=0;
+        $tempDigitArray = [];
         for ($i = 0; $i < 3; $i++) {
             for ($j = 0; $j < 3; $j++) {
                 if ($line[$counter] == 0) {
-                    $this->digitTemplate[$i][$j] = " ";
+                    $tempDigitArray[$i][$j] = " ";
+                }else{
+                    $tempDigitArray[$i][$j] = $this->digitTemplate[$i][$j];
                 }
                 $counter++;
             }
         }
-    }
-
-    public function displaySingleDigit()
-    {
-        for ($i = 0; $i < 3; $i++) {
-            echo $this->digitTemplate[$i][0] . $this->digitTemplate[$i][1] . $this->digitTemplate[$i][2];
-            echo "\n";
-        }
+        return $tempDigitArray;
     }
 
     /**
