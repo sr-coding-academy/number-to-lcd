@@ -40,4 +40,12 @@ class DigitTest extends TestCase
 
         $this->assertEquals($expectedArraySize, $actualArraySize);
     }
+
+    public function testDigitArrayContainsOnlyNumericCharacters()
+    {
+        $listOfCharacters = $this->singleDigit->readSingleDigitFromFile();
+        foreach ($listOfCharacters as $char){
+            $this->assertIsNumeric($char);
+        }
+    }
 }

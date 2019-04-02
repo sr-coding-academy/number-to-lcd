@@ -1,6 +1,5 @@
 Testliste:
 Klasse Digit testen
-    Cecken ob das array 1 und 0 enthält
     Checken ob Digit represents expectation
     Refactor buildDigit
 Klasse Display testen
@@ -13,3 +12,4 @@ FileExists und FileReadable Methoden in eigene Klasse auslagern
 Input benutzen
 Alle anderen Digits implementieren in text file (1-9 8?)
 Display funktionalität aus Digit extrahieren
+Checken ob das array 1 und 0 enthält (Typensicherung der Lese-Methode)
