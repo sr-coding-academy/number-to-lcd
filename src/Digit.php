@@ -34,13 +34,13 @@ class Digit
 
     public function buildDigit($line)
     {
-        $counter=0;
+        $counter = 0;
         $tempDigitArray = [];
         for ($i = 0; $i < 3; $i++) {
             for ($j = 0; $j < 3; $j++) {
                 if ($line[$counter] == 0) {
                     $tempDigitArray[$i][$j] = " ";
-                }else{
+                } else {
                     $tempDigitArray[$i][$j] = $this->digitTemplate[$i][$j];
                 }
                 $counter++;
@@ -54,8 +54,19 @@ class Digit
      */
     private function readFile()
     {
+        $line = "";
         $fileHandler = fopen(self::DIGIT_TEMPLATE_FILE_PATH, "r");
-        $line = fread($fileHandler, 1024);
-        return $line;
+        $counter = 0;
+
+        if ($fileHandler) {
+            while(!feof($fileHandler)) {
+                $line = fgets($fileHandler);
+                if($counter === $this->singleDigit) {
+                    fclose($fileHandler);
+                    return rtrim($line);
+                }
+                $counter++;
+            }
+        }
     }
 }

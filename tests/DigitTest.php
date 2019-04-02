@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 class DigitTest extends TestCase
 {
-    const ANY_DIGIT = 5;
+    const ANY_DIGIT = 0;
     /**
      * @var Digit
      */
@@ -52,11 +52,23 @@ class DigitTest extends TestCase
     public function testBuildZeroReturnsCorrectArray()
     {
         $testDigit = new Digit(0);
-        $listOfCharacters = $this->singleDigit->readSingleDigitFromFile();
+        $listOfCharacters = $testDigit->readSingleDigitFromFile();
         $expected = [
             [" ", "_", " "],
             ["|", " ", "|"],
             ["|", "_", "|"]
+        ];
+        $this->assertEquals($expected, $testDigit->buildDigit($listOfCharacters));
+    }
+
+    public function testBuildOneReturnsCorrectArray()
+    {
+        $testDigit = new Digit(1);
+        $listOfCharacters = $testDigit->readSingleDigitFromFile();
+        $expected = [
+            [" ", " ", " "],
+            [" ", " ", "|"],
+            [" ", " ", "|"]
         ];
         $this->assertEquals($expected, $testDigit->buildDigit($listOfCharacters));
     }
