@@ -1,15 +1,12 @@
 Testliste:
-Klasse Digit testen
-    Checken ob Digit represents expectation
-    Refactor buildDigit
-Klasse Display testen
-Klasse NumberToLCD testen
+
 
 Todos:
+Refactor Digit
+Refactor Display
+Alle anderen Digits implementieren in text file (2-9? Ist die 8 ein Spezialfall(Counter!)?)
+Digit nebeneinander darstellen
 Digits.txt -> JSON
 FileExists und FileReadable Methoden in eigene Klasse auslagern
-2. Zeile in das digits.txt schreiben
-Input benutzen
-Alle anderen Digits implementieren in text file (1-9 8?)
 Display funktionalität aus Digit extrahieren
 Checken ob das array 1 und 0 enthält (Typensicherung der Lese-Methode)
