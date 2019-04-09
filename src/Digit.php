@@ -6,11 +6,13 @@ class Digit
 {
     const DIGIT_TEMPLATE_FILE_PATH = __DIR__ . '\..\resources\digits.txt';
     private $singleDigit;
+    private $singleInputLine;
     private $digitTemplate = [];
 
     public function __construct($singleDigit)
     {
         $this->singleDigit = $singleDigit;
+        $this->singleInputLine = $this->readSingleDigitFromFile();
         $this->initializeTemplate();
     }
 
@@ -23,30 +25,25 @@ class Digit
         ];
     }
 
-    public function readSingleDigitFromFile()
+    public function buildDigit()
     {
-        $line = $this->readFile();
-
-        $line = explode(',', $line);
-
-        return $line;
-    }
-
-    public function buildDigit($line)
-    {
-        $counter = 0;
+        $inputLinePosition = 0;
         $tempDigitArray = [];
-        for ($i = 0; $i < 3; $i++) {
-            for ($j = 0; $j < 3; $j++) {
-                if ($line[$counter] == 0) {
-                    $tempDigitArray[$i][$j] = " ";
-                } else {
-                    $tempDigitArray[$i][$j] = $this->digitTemplate[$i][$j];
-                }
-                $counter++;
+        for ($row = 0; $row < 3; $row++) {
+            for ($column = 0; $column < 3; $column++) {
+                $tempDigitArray[$row][$column] = $this->getCharacterOfTemplatePosition($inputLinePosition, $this->digitTemplate[$row][$column]);
+                $inputLinePosition++;
             }
         }
         return $tempDigitArray;
+    }
+
+    public function readSingleDigitFromFile()
+    {
+        $line = $this->readFile();
+        $line = explode(',', $line);
+
+        return $line;
     }
 
     /**
@@ -54,7 +51,6 @@ class Digit
      */
     private function readFile()
     {
-        $line = "";
         $fileHandler = fopen(self::DIGIT_TEMPLATE_FILE_PATH, "r");
         $counter = 0;
 
@@ -68,5 +64,19 @@ class Digit
                 $counter++;
             }
         }
+        return null;
+    }
+
+    /**
+     * @param int $inputLinePosition
+     * @param string $templateCharacter
+     * @return string
+     */
+    private function getCharacterOfTemplatePosition(int $inputLinePosition, string $templateCharacter): string
+    {
+        if ($this->singleInputLine[$inputLinePosition] == 0) {
+            return " ";
+        }
+        return $templateCharacter;
     }
 }

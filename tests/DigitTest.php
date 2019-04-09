@@ -52,24 +52,22 @@ class DigitTest extends TestCase
     public function testBuildZeroReturnsCorrectArray()
     {
         $testDigit = new Digit(0);
-        $listOfCharacters = $testDigit->readSingleDigitFromFile();
         $expected = [
             [" ", "_", " "],
             ["|", " ", "|"],
             ["|", "_", "|"]
         ];
-        $this->assertEquals($expected, $testDigit->buildDigit($listOfCharacters));
+        $this->assertEquals($expected, $testDigit->buildDigit());
     }
 
     public function testBuildOneReturnsCorrectArray()
     {
         $testDigit = new Digit(1);
-        $listOfCharacters = $testDigit->readSingleDigitFromFile();
         $expected = [
             [" ", " ", " "],
             [" ", " ", "|"],
             [" ", " ", "|"]
         ];
-        $this->assertEquals($expected, $testDigit->buildDigit($listOfCharacters));
+        $this->assertEquals($expected, $testDigit->buildDigit());
     }
 }
