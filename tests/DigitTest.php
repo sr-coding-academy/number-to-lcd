@@ -28,22 +28,42 @@ class DigitTest extends TestCase
         $this->assertFileIsReadable(Digit::DIGIT_TEMPLATE_FILE_PATH);
     }
 
-    public function testReadSingleDigitFromFileReturnValidArray()
+    /**
+     * @throws \ReflectionException
+     */
+    private function reflectionOnSingleDigitFromFile()
     {
-        $this->assertIsArray($this->singleDigit->readSingleDigitFromFile());
+        $reflectionClass = new \ReflectionClass(Digit::class);
+        $method = $reflectionClass->getMethod('getSingleDigitFromFile');
+        $method->setAccessible(true);
+        return $method->invoke($this->singleDigit);
     }
 
+    /**
+     * @throws \ReflectionException
+     */
+    public function testReadSingleDigitFromFileReturnValidArray()
+    {
+        $this->assertIsArray($this->reflectionOnSingleDigitFromFile());
+    }
+
+    /**
+     * @throws \ReflectionException
+     */
     public function testReadSingleDigitFromFileHasRightSize()
     {
         $expectedArraySize = 9;
-        $actualArraySize = sizeof($this->singleDigit->readSingleDigitFromFile());
+        $actualArraySize = sizeof($this->reflectionOnSingleDigitFromFile());
 
         $this->assertEquals($expectedArraySize, $actualArraySize);
     }
 
+    /**
+     * @throws \ReflectionException
+     */
     public function testDigitArrayContainsOnlyNumericCharacters()
     {
-        $listOfCharacters = $this->singleDigit->readSingleDigitFromFile();
+        $listOfCharacters = $this->reflectionOnSingleDigitFromFile();
         foreach ($listOfCharacters as $char) {
             $this->assertIsNumeric($char);
         }
@@ -57,7 +77,7 @@ class DigitTest extends TestCase
             ["|", " ", "|"],
             ["|", "_", "|"]
         ];
-        $this->assertEquals($expected, $testDigit->buildDigit());
+        $this->assertEquals($expected, $testDigit->getGeneratedLcd());
     }
 
     public function testBuildOneReturnsCorrectArray()
@@ -68,6 +88,6 @@ class DigitTest extends TestCase
             [" ", " ", "|"],
             [" ", " ", "|"]
         ];
-        $this->assertEquals($expected, $testDigit->buildDigit());
+        $this->assertEquals($expected, $testDigit->getGeneratedLcd());
     }
 }
