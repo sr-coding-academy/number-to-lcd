@@ -2,7 +2,7 @@ Testliste:
 
 
 Todos:
-Refactor Digit
+Refactor Digit - readLineFromFile()
 Refactor Display
 Alle anderen Digits implementieren in text file (2-9? Ist die 8 ein Spezialfall(Counter!)?)
 Digit nebeneinander darstellen
