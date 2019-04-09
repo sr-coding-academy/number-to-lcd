@@ -3,26 +3,37 @@
 namespace NumberToLCDTests;
 
 use NumberToLCD\Digit;
+use NumberToLCD\Exceptions\LineNotFoundException;
 use PHPUnit\Framework\TestCase;
 
 class DigitTest extends TestCase
 {
     const ANY_DIGIT = 0;
+    const UNIMPLEMENTED_DIGIT = 11;
     /**
      * @var Digit
      */
     private $singleDigit;
 
+    /**
+     * @throws LineNotFoundException
+     */
     public function setUp()
     {
         $this->singleDigit = new Digit(self::ANY_DIGIT);
     }
 
+    /**
+     *
+     */
     public function testDigitsTextFileExists()
     {
         $this->assertFileExists(Digit::DIGIT_TEMPLATE_FILE_PATH);
     }
 
+    /**
+     *
+     */
     public function testDigitsTextFileIsReadable()
     {
         $this->assertFileIsReadable(Digit::DIGIT_TEMPLATE_FILE_PATH);
@@ -69,6 +80,9 @@ class DigitTest extends TestCase
         }
     }
 
+    /**
+     * @throws LineNotFoundException
+     */
     public function testBuildZeroReturnsCorrectArray()
     {
         $testDigit = new Digit(0);
@@ -80,6 +94,9 @@ class DigitTest extends TestCase
         $this->assertEquals($expected, $testDigit->getGeneratedLcd());
     }
 
+    /**
+     * @throws LineNotFoundException
+     */
     public function testBuildOneReturnsCorrectArray()
     {
         $testDigit = new Digit(1);
@@ -89,5 +106,14 @@ class DigitTest extends TestCase
             [" ", " ", "|"]
         ];
         $this->assertEquals($expected, $testDigit->getGeneratedLcd());
+    }
+
+    /**
+     * @throws LineNotFoundException
+     */
+    public function testUnimplementedDigitThrowsException()
+    {
+        $this->expectException(LineNotFoundException::class);
+        new Digit(self::UNIMPLEMENTED_DIGIT);
     }
 }
