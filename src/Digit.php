@@ -34,10 +34,10 @@ class Digit
     }
 
     /**
-     * @return resource
+     * @return string
      * @throws LineNotFoundException
      */
-    private function getLineFromHandler()
+    private function getLineFromHandler(): string
     {
         $txtFileHandler = new TxtFileHandler('digits.txt');
         return $txtFileHandler->readLineFromFile($this->singleDigit);

@@ -9,6 +9,7 @@ use PHPUnit\Framework\TestCase;
 class TxtFileHandlerTest extends TestCase
 {
     const UNIMPLEMENTED_DIGIT = 11;
+    const IMPLEMENTED_DIGIT = 1;
     /**
      * @var TxtFileHandler
      */
@@ -26,6 +27,14 @@ class TxtFileHandlerTest extends TestCase
     {
         $this->expectException(LineNotFoundException::class);
         $this->txtFileHandler->readLineFromFile(self::UNIMPLEMENTED_DIGIT);
+    }
+
+    /**
+     * @throws LineNotFoundException
+     */
+    public function testImplementedDigitReturnsString()
+    {
+        $this->assertIsString($this->txtFileHandler->readLineFromFile(self::IMPLEMENTED_DIGIT));
     }
 
     public function testDigitsTextFileExists()

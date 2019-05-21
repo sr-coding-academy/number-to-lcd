@@ -17,10 +17,10 @@ class TxtFileHandler
 
     /**
      * @param int $singleDigit
-     * @return resource
+     * @return string
      * @throws LineNotFoundException
      */
-    public function readLineFromFile(int $singleDigit)
+    public function readLineFromFile(int $singleDigit) : string
     {
         $fileHandler = fopen(self::DIGIT_TEMPLATE_DIRECTORY . $this->digitTemplateFileName, "r");
         $lineNumber = 0;
