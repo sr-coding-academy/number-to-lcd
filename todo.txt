@@ -12,3 +12,4 @@ Digits.txt -> JSON
 FileExists und FileReadable Methoden in eigene Klasse auslagern
 Display funktionalität aus Digit extrahieren
 Checken ob das array 1 und 0 enthält (Typensicherung der Lese-Methode)
+Exceptions catchen - wo?
