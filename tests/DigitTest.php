@@ -24,22 +24,6 @@ class DigitTest extends TestCase
     }
 
     /**
-     *
-     */
-    public function testDigitsTextFileExists()
-    {
-        $this->assertFileExists(Digit::DIGIT_TEMPLATE_FILE_PATH);
-    }
-
-    /**
-     *
-     */
-    public function testDigitsTextFileIsReadable()
-    {
-        $this->assertFileIsReadable(Digit::DIGIT_TEMPLATE_FILE_PATH);
-    }
-
-    /**
      * @throws \ReflectionException
      */
     private function reflectionOnSingleDigitFromFile()

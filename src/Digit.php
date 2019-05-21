@@ -5,8 +5,7 @@ namespace NumberToLCD;
 use NumberToLCD\Exceptions\LineNotFoundException;
 
 class Digit
-{
-    const DIGIT_TEMPLATE_FILE_PATH = __DIR__ . '\..\resources\digits.txt';
+{    
     private $singleDigit;
     private $singleInputLine;
     private $generatedLcd;
@@ -28,7 +27,7 @@ class Digit
      */
     private function getSingleDigitFromFile()
     {
-        $line = $this->readLineFromFile();
+        $line = $this->getLineFromHandler();
         $line = explode(',', $line);
 
         return $line;
@@ -38,21 +37,11 @@ class Digit
      * @return resource
      * @throws LineNotFoundException
      */
-    private function readLineFromFile()
+    private function getLineFromHandler()
     {
-        $fileHandler = fopen(self::DIGIT_TEMPLATE_FILE_PATH, "r");
-        $lineNumber = 0;
-        if ($fileHandler) {
-            while (!feof($fileHandler)) {
-                $line = fgets($fileHandler);
-                if ($lineNumber === $this->singleDigit) {
-                    fclose($fileHandler);
-                    return rtrim($line);
-                }
-                $lineNumber++;
-            }
-        }
-        throw new LineNotFoundException($this->singleDigit);
+        $txtFileHandler = new TxtFileHandler();
+        return $txtFileHandler->readLineFromFile($this->singleDigit);
+
     }
 
     private function generateLcd()
