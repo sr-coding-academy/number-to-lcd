@@ -39,9 +39,8 @@ class Digit
      */
     private function getLineFromHandler()
     {
-        $txtFileHandler = new TxtFileHandler();
+        $txtFileHandler = new TxtFileHandler('digits.txt');
         return $txtFileHandler->readLineFromFile($this->singleDigit);
-
     }
 
     private function generateLcd()

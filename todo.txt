@@ -2,7 +2,9 @@ Testliste:
 
 
 Todos:
-Refactor Digit - readLineFromFile()
+Refactor TxtFileHandler - readLineFromFile()
+Zwischenklasse zwischen Digit und TxtFileHandler um Template Array zu generieren
+TxtFileHandler dynamischer Filetyp im constructor
 Refactor Display
 Alle anderen Digits implementieren in text file (2-9? Ist die 8 ein Spezialfall(Counter!)?)
 Digit nebeneinander darstellen

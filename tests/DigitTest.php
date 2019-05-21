@@ -9,7 +9,6 @@ use PHPUnit\Framework\TestCase;
 class DigitTest extends TestCase
 {
     const ANY_DIGIT = 0;
-    const UNIMPLEMENTED_DIGIT = 11;
     /**
      * @var Digit
      */
@@ -90,14 +89,5 @@ class DigitTest extends TestCase
             [" ", " ", "|"]
         ];
         $this->assertEquals($expected, $testDigit->getGeneratedLcd());
-    }
-
-    /**
-     * @throws LineNotFoundException
-     */
-    public function testUnimplementedDigitThrowsException()
-    {
-        $this->expectException(LineNotFoundException::class);
-        new Digit(self::UNIMPLEMENTED_DIGIT);
     }
 }

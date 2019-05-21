@@ -7,7 +7,13 @@ use NumberToLCD\Exceptions\LineNotFoundException;
 
 class TxtFileHandler
 {
-    const DIGIT_TEMPLATE_FILE_PATH = __DIR__ . '\..\resources\digits.txt';
+    const DIGIT_TEMPLATE_DIRECTORY = __DIR__ . '\..\resources\\';
+    private $digitTemplateFileName;
+
+    public function __construct($digitTemplateFileName)
+    {
+        $this->digitTemplateFileName = $digitTemplateFileName;
+    }
 
     /**
      * @param int $singleDigit
@@ -16,7 +22,7 @@ class TxtFileHandler
      */
     public function readLineFromFile(int $singleDigit)
     {
-        $fileHandler = fopen(self::DIGIT_TEMPLATE_FILE_PATH, "r");
+        $fileHandler = fopen(self::DIGIT_TEMPLATE_DIRECTORY . $this->digitTemplateFileName, "r");
         $lineNumber = 0;
         if ($fileHandler) {
             while (!feof($fileHandler)) {
