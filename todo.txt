@@ -1,17 +1,16 @@
 Testliste:
-
+Testet, ob die Display Klasse eine einstellige Zahl ausgibt.
+Testet, ob die Display Klasse eine zweistellige Zahl ausgibt.
 
 Todos:
-
 Implement Display:
-    - Digitzeilen durchlaufen
-        - Digitzeilen anzeigen
+    - Digit nebeneinander darstellen
+        - Digitzeilen durchlaufen
+            - Digitzeilen anzeigen
+        - einstellig, zweistellig, ...
+Alle anderen Digits implementieren in text file (2-9? Ist die 8 ein Spezialfall(Counter!)?)
+(Checken ob das array 1 und 0 enthält)
 Zwischenklasse zwischen Digit und TxtFileHandler um Template Array zu generieren
 TxtFileHandler dynamischer Filetyp im constructor
-Alle anderen Digits implementieren in text file (2-9? Ist die 8 ein Spezialfall(Counter!)?)
-Digit nebeneinander darstellen
-Digits.txt -> JSON
-FileExists und FileReadable Methoden in eigene Klasse auslagern
-Display funktionalität aus Digit extrahieren
-Checken ob das array 1 und 0 enthält (Typensicherung der Lese-Methode)
+    Digits.txt -> JSON
 Exceptions catchen
