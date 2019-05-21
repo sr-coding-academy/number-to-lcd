@@ -2,10 +2,11 @@
 
 namespace NumberToLCD;
 
+use NumberToLCD\Exceptions\FileNotFoundException;
 use NumberToLCD\Exceptions\LineNotFoundException;
 
 class Digit
-{    
+{
     private $singleDigit;
     private $singleInputLine;
     private $generatedLcd;
@@ -35,6 +36,7 @@ class Digit
 
     /**
      * @return string
+     * @throws FileNotFoundException
      * @throws LineNotFoundException
      */
     private function getLineFromHandler(): string

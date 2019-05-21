@@ -12,6 +12,7 @@ class Display
      */
     public function __construct($allDigits)
     {
+        var_dump($allDigits);
         $this->allDigits = $allDigits;
     }
 
