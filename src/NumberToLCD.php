@@ -4,25 +4,43 @@ namespace NumberToLCD;
 
 class NumberToLCD
 {
-    private $inputNumbers;
-    private $allDigits;
     private $display;
 
-    public function __construct(string $inputNumber)
+    /**
+     * NumberToLCD constructor.
+     * @param string $inputNumberAsString
+     * @throws Exceptions\LineNotFoundException
+     */
+    public function __construct(string $inputNumberAsString)
     {
-        $this->inputNumbers = str_split($inputNumber);
-        $this->inputNumbers = array_map('intval', $this->inputNumbers);
-        $this->allDigits = $this->initializeAllDigits();
-        $this->display = new Display($this->allDigits);
+        $allDigits = $this->initializeAllDigits($inputNumberAsString);
+        $this->display = new Display($allDigits);
         $this->display->displayAllDigits();
     }
 
-    private function initializeAllDigits()
+    /**
+     * @param string $inputNumberAsString
+     * @return array
+     * @throws Exceptions\LineNotFoundException
+     */
+    private function initializeAllDigits(string $inputNumberAsString)
     {
         $allDigits = [];
-        foreach ($this->inputNumbers as $singleDigit) {
+        $numbers = $this->parseInputString($inputNumberAsString);
+        foreach ($numbers as $singleDigit) {
             $allDigits[] = new Digit($singleDigit);
         }
+
         return $allDigits;
+    }
+
+    /**
+     * @param string $inputNumber
+     * @return array
+     */
+    private function parseInputString(string $inputNumber): array
+    {
+        $inputNumbers = str_split($inputNumber);
+        return array_map('intval', $inputNumbers);
     }
 }
