@@ -2,7 +2,7 @@ Testliste:
 - NumberToLCD
 
 Todos:
-Alle anderen Digits implementieren in text file (2-9? Ist die 8 ein Spezialfall(Counter!)?)
+NumberToLCD Eingabe validieren
 (Checken ob das array 1 und 0 enthält)
 Zwischenklasse zwischen Digit und TxtFileHandler um Template Array zu generieren
 TxtFileHandler dynamischer Filetyp im constructor
