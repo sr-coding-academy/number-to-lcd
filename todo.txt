@@ -1,13 +1,7 @@
 Testliste:
-Testet, ob die Display Klasse eine einstellige Zahl ausgibt.
-Testet, ob die Display Klasse eine zweistellige Zahl ausgibt.
+- NumberToLCD
 
 Todos:
-Implement Display:
-    - Digit nebeneinander darstellen
-        - Digitzeilen durchlaufen
-            - Digitzeilen anzeigen
-        - einstellig, zweistellig, ...
 Alle anderen Digits implementieren in text file (2-9? Ist die 8 ein Spezialfall(Counter!)?)
 (Checken ob das array 1 und 0 enthält)
 Zwischenklasse zwischen Digit und TxtFileHandler um Template Array zu generieren
