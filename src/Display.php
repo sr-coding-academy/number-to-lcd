@@ -12,15 +12,23 @@ class Display
      */
     public function __construct($allDigits)
     {
-        var_dump($allDigits);
         $this->allDigits = $allDigits;
     }
 
     public function displayAllDigits()
     {
         foreach ($this->allDigits as $digit) {
-            // TODO
+            $generatedLCD = $digit->getGeneratedLcd();
+            $this->printLcd($generatedLCD);
         }
+    }
+
+    private function printLcd(array $generatedLcd)
+    {
+        foreach ($generatedLcd as &$line) {
+            $line = implode('', $line);
+        }
+        echo implode("\n", $generatedLcd);
     }
 
 }
