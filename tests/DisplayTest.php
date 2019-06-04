@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection ALL */
 
 namespace NumberToLCDTests;
 
@@ -21,10 +21,22 @@ class DisplayTest extends TestCase
     public function testShouldDisplayZero()
     {
         $display = new Display([$this->zeroDigit]);
-        $expected = " _ \n| |\n|_|";
+        $expected = " _  \n| | \n|_| ";
 
         $display->displayAllDigits();
 
         $this->expectOutputString($expected);
     }
+
+    public function testShouldDisplayTwoZeros()
+    {
+        $display = new Display([$this->zeroDigit, $this->zeroDigit]);
+        $expected = " _   _  \n| | | | \n|_| |_| ";
+
+        $display->displayAllDigits();
+
+        $this->expectOutputString($expected);
+    }
+
+
 }

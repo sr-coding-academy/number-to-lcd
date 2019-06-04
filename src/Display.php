@@ -17,18 +17,26 @@ class Display
 
     public function displayAllDigits()
     {
-        foreach ($this->allDigits as $digit) {
-            $generatedLCD = $digit->getGeneratedLcd();
-            $this->printLcd($generatedLCD);
+        $combinedDigits = [];
+        for ($layer = 0; $layer < 3; $layer++) {
+            $combinedDigits[$layer] = $this->extractLayerFromDigits($layer);
         }
+        $this->printLcd($combinedDigits);
     }
 
-    private function printLcd(array $generatedLcd)
+    private function printLcd(array $combinedDigits)
     {
-        foreach ($generatedLcd as &$line) {
-            $line = implode('', $line);
+        echo implode("\n", $combinedDigits);
+    }
+
+    private function extractLayerFromDigits(int $layer)
+    {
+        $line = "";
+        foreach ($this->allDigits as $digit) {
+            $generatedLCD = $digit->getGeneratedLcd();
+            $line .= implode('', $generatedLCD[$layer]) . ' ';
         }
-        echo implode("\n", $generatedLcd);
+        return $line;
     }
 
 }
