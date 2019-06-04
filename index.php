@@ -4,4 +4,4 @@ require "vendor/autoload.php";
 
 use NumberToLCD\NumberToLCD;
 
-$converter = new NumberToLCD("01");
+$converter = new NumberToLCD("0123456789");
