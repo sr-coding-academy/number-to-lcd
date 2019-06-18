@@ -1,5 +1,4 @@
-<?php /** @noinspection ALL */
-
+<?php
 namespace NumberToLCDTests;
 
 use NumberToLCD\Digit;
@@ -25,6 +24,7 @@ class DisplayTest extends TestCase
 
         $display->displayAllDigits();
 
+        /** @noinspection PhpParamsInspection */
         $this->expectOutputString($expected);
     }
 
@@ -35,6 +35,7 @@ class DisplayTest extends TestCase
 
         $display->displayAllDigits();
 
+        /** @noinspection PhpParamsInspection */
         $this->expectOutputString($expected);
     }
 
