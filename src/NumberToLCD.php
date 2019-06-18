@@ -10,15 +10,15 @@ class NumberToLCD
     /**
      * NumberToLCD constructor.
      * @param string $inputNumber
+     * @param InputParser $inputParser
+     * @param Display $display
      * @throws Exceptions\LineNotFoundException
      */
-    public function __construct(string $inputNumber)
+    public function __construct(string $inputNumber, InputParser $inputParser, Display $display)
     {
-        $this->inputParser = new InputParser();
+        $this->inputParser = $inputParser;
         $allDigits = $this->inputParser->getDigitsFromNumber($inputNumber);
-        $this->display = new Display($allDigits);
-        $this->display->displayAllDigits();
+        $this->display = $display;
+        $this->display->displayAllDigits($allDigits);
     }
-
-
 }

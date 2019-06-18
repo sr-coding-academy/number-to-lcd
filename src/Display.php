@@ -5,18 +5,14 @@ namespace NumberToLCD;
 
 class Display
 {
+    /**
+     * @var $allDigits Digit[]
+     */
     private $allDigits;
 
-    /**
-     * @param Digit[] $allDigits
-     */
-    public function __construct($allDigits)
+    public function displayAllDigits($allDigits)
     {
         $this->allDigits = $allDigits;
-    }
-
-    public function displayAllDigits()
-    {
         $combinedDigits = [];
         for ($layer = 0; $layer < 3; $layer++) {
             $combinedDigits[$layer] = $this->extractLayerFromDigits($layer);

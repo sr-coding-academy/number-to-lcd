@@ -7,7 +7,10 @@ use PHPUnit\Framework\TestCase;
 
 class DisplayTest extends TestCase
 {
+    /** @var Digit */
     private $zeroDigit;
+    /** @var Display */
+    private $display;
 
     /**
      * @throws \NumberToLCD\Exceptions\LineNotFoundException
@@ -15,14 +18,14 @@ class DisplayTest extends TestCase
     protected function setUp()
     {
         $this->zeroDigit = new Digit(0);
+        $this->display = new Display();
     }
 
     public function testShouldDisplayZero()
     {
-        $display = new Display([$this->zeroDigit]);
         $expected = " _  \n| | \n|_| ";
 
-        $display->displayAllDigits();
+        $this->display->displayAllDigits([$this->zeroDigit]);
 
         /** @noinspection PhpParamsInspection */
         $this->expectOutputString($expected);
@@ -30,10 +33,9 @@ class DisplayTest extends TestCase
 
     public function testShouldDisplayTwoZeros()
     {
-        $display = new Display([$this->zeroDigit, $this->zeroDigit]);
         $expected = " _   _  \n| | | | \n|_| |_| ";
 
-        $display->displayAllDigits();
+        $this->display->displayAllDigits([$this->zeroDigit, $this->zeroDigit]);
 
         /** @noinspection PhpParamsInspection */
         $this->expectOutputString($expected);
