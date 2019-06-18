@@ -8,17 +8,22 @@ class NumberToLCD
     private $inputParser;
 
     /**
-     * NumberToLCD constructor.
-     * @param string $inputNumber
      * @param InputParser $inputParser
      * @param Display $display
-     * @throws Exceptions\LineNotFoundException
      */
-    public function __construct(string $inputNumber, InputParser $inputParser, Display $display)
+    public function __construct(InputParser $inputParser, Display $display)
     {
         $this->inputParser = $inputParser;
-        $allDigits = $this->inputParser->getDigitsFromNumber($inputNumber);
         $this->display = $display;
+    }
+
+    /**
+     * @param string $inputNumber
+     * @throws Exceptions\LineNotFoundException
+     */
+    public function printToLCD(string $inputNumber)
+    {
+        $allDigits = $this->inputParser->getDigitsFromNumber($inputNumber);
         $this->display->displayAllDigits($allDigits);
     }
 }
