@@ -9,8 +9,8 @@ class TxtFileHandler
 {
     const DIGIT_TEMPLATE_DIRECTORY = __DIR__ . '\..\resources\\';
 
-    private $digitTemplates = [];
     private $digitTemplateFileName;
+    private $digitTemplates = [];
 
     /**
      * TxtFileHandler constructor.
